@@ -3,16 +3,26 @@
 <head>
     <meta charset="utf-8">
     <title>{{ username }}'s agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
 </head>
 <body>
-    <h2>{{ username }}'s agent</h2>
+
+    <h2>
+        <img alt="Avatar" class="avatar" src="{{ url_for('static', filename='images/avatar.png') }}">
+        {{ username }}'s agent
+    </h2>
+
     {# use length filter to get agents length #}
     <p>{{ agents|length }} agents</p>
-    <ul>
+
+    <ul class="agent-list">
         {% for agent in agents %}  {# loop agents #}
         <li>{{ agent.name }} - {{ agent.time }}</li>  {# equal to agent['name'] #}
         {% endfor %}  {# use endfor tag to end for loop #}
     </ul>
+
+    <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}">
+
     <footer>
         <small>&copy; 2021 <a href="https://github.com/monkeykingg/agent">Flask Project</a></small>
     </footer>
