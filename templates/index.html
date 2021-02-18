@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ username }}'s agent</title>
+</head>
+<body>
+    <h2>{{ username }}'s agent</h2>
+    {# use length filter to get agents length #}
+    <p>{{ agents|length }} agents</p>
+    <ul>
+        {% for agent in agents %}  {# loop agents #}
+        <li>{{ agent.name }} - {{ agent.time }}</li>  {# equal to agent['name'] #}
+        {% endfor %}  {# use endfor tag to end for loop #}
+    </ul>
+    <footer>
+        <small>&copy; 2021 <a href="https://github.com/monkeykingg/agent">Flask Project</a></small>
+    </footer>
+</body>
+</html>
