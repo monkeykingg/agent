@@ -1,0 +1,58 @@
+flask shell
+
+
+# create
+>>> from app import db
+>>> db.create_all()
+
+>>> from app import User, Agent
+>>> from flask_sqlalchemy import SQLAlchemy
+
+
+# add
+
+>>> db = SQLAlchemy(app)
+>>> user = User(username='alex')
+>>> shelter = Agent(name='shelter', time='2021-02-18')
+
+>>> db.session.add(user)
+>>> db.session.add(shelter)
+
+
+# search
+
+# find first
+>>> agent = Agent.query.first()
+>>> agent.name
+'shelter'
+>>> agent.time
+'2021-02-18'
+
+# find all
+>>> Agent.query.all()
+[<Agent 1>]
+
+# find by key index
+>>> Agent.query.get(1)
+<Agent 1>
+
+# find by name
+>>> Agent.query.filter_by(name='shelter').first()
+<Agent 1>
+>>> Agent.query.filter(Agent.name=='shelter').first()
+<Agent 1>
+
+
+# update
+
+>>> agent = Agent.query.get(1)
+>>> agent.name = 'shelter'
+>>> agent.time = '2021-02-18'
+>>> db.session.commit()
+
+
+# delete
+
+>>> agent = Agent.query.get(1)
+>>> db.session.delete(agent)
+>>> db.session.commit()
