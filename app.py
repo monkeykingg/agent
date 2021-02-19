@@ -77,8 +77,18 @@ def test_url_for():
     print(url_for('test_url_for', num=2)) # /test?num=2
     return 'Test page'
 
+@app.context_processor
+def inject_user(): 
+    user = User.query.first()
+    return dict(user=user)
+
 @app.route('/')
 def index():
-    user = User.query.first()
+    #user = User.query.first()
     agents = Agent.query.all()
-    return render_template('index.html', user=user, agents=agents)
+    return render_template('index.html', agents=agents)
+
+@app.errorhandler(404) 
+def page_not_found(e):
+    user = User.query.first()
+    return render_template('404.html'), 404
