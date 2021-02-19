@@ -4,9 +4,21 @@
 
 {# use length filter to get agents length #}
 <p>{{ agents|length }} agents</p>
+<form method="post">
+    Name <input type="text" name="name" autocomplete="off" required>
+    Time <input type="text" name="time" autocomplete="off" required>
+    <input class="btn" type="submit" name="submit" value="Add">
+</form>
 <ul class="agent-list">
     {% for agent in agents %}  {# loop agents #}
-    <li>{{ agent.name }} - {{ agent.time }}</li>  {# equal to agent['name'] #}
+    <li>{{ agent.name }} - {{ agent.time }}
+        <span class="float-right">
+            <a class="btn" href="{{ url_for('edit', agent_id=agent.id) }}">Edit</a>
+            <form class="inline-form" method="post" action="{{ url_for('delete', agent_id=agent.id) }}">
+                <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+        </span>
+    </li>  {# equal to agent['name'] #}
     {% endfor %}  {# use endfor tag to end for loop #}
 </ul>
 <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}">
