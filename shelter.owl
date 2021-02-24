@@ -1,0 +1,532 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://ontology.eil.utoronto.ca/tove/shelter"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://ontology.eil.utoronto.ca/tove/shelter">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="vann" IRI="http://purl.org/vocab/vann/"/>
+    <Prefix name="shelter" IRI="http://ontology.eil.utoronto.ca/tove/shelter#"/>
+    <Import>http://www.w3.org/2006/time#2016</Import>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/terms/creator"/>
+        <Literal>Mark Fox, msf@eil.utoronto.ca</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/terms/description"/>
+        <Literal>Shelter Ontology - developed for the Toronto Digital Twin project.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/terms/license"/>
+        <Literal>http://creativecommons.org/licenses/by/3.0/</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespacePrefix"/>
+        <Literal>shelter</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespaceUri"/>
+        <Literal>http://ontology.eil.utoronto.ca/tove/shelter#</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#AdultShelter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Family"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gender"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Man"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MenShelter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Occupant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Room"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shelter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ShelterThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Woman"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WomenShelter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#forPerson"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#forRoom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#forShelter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#forTimeInterval"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasBed"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGender"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMember"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOccupant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRoom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#inRoom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#inShelter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAge"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasFamilyName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasGivenName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#shelterData_Property"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#female"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#male"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://purl.org/dc/terms/description"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespacePrefix"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespaceUri"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://purl.org/dc/terms/license"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://purl.org/dc/terms/creator"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#AdultShelter"/>
+        <Class IRI="#Shelter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AdultShelter"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasRoom"/>
+            <ObjectIntersectionOf>
+                <Class IRI="#Room"/>
+                <ObjectAllValuesFrom>
+                    <ObjectProperty IRI="#hasOccupant"/>
+                    <ObjectIntersectionOf>
+                        <Class IRI="#Person"/>
+                        <DataAllValuesFrom>
+                            <DataProperty IRI="#hasAge"/>
+                            <DatatypeRestriction>
+                                <Datatype abbreviatedIRI="xsd:int"/>
+                                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">18</Literal>
+                                </FacetRestriction>
+                            </DatatypeRestriction>
+                        </DataAllValuesFrom>
+                    </ObjectIntersectionOf>
+                </ObjectAllValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bed"/>
+        <Class IRI="#ShelterThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bed"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#forPerson"/>
+            <Class IRI="#Person"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bed"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#forRoom"/>
+            <Class IRI="#Room"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Family"/>
+        <Class IRI="#ShelterThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Family"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasMember"/>
+            <Class IRI="#Person"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Family"/>
+        <DataAllValuesFrom>
+            <DataProperty IRI="#hasFamilyName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gender"/>
+        <Class IRI="#ShelterThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Man"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Man"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasGender"/>
+            <NamedIndividual IRI="#male"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MenShelter"/>
+        <Class IRI="#Shelter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MenShelter"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasRoom"/>
+            <ObjectIntersectionOf>
+                <Class IRI="#Room"/>
+                <ObjectAllValuesFrom>
+                    <ObjectProperty IRI="#hasOccupant"/>
+                    <Class IRI="#Man"/>
+                </ObjectAllValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Occupant"/>
+        <Class IRI="#ShelterThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Occupant"/>
+        <ObjectUnionOf>
+            <Class IRI="#Family"/>
+            <Class IRI="#Person"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Occupant"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#forTimeInterval"/>
+            <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Occupant"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#forRoom"/>
+            <Class IRI="#Room"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Occupant"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasBed"/>
+            <Class IRI="#Bed"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <Class IRI="#ShelterThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasBed"/>
+            <Class IRI="#Bed"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasGender"/>
+            <Class IRI="#Gender"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#inRoom"/>
+            <Class IRI="#Room"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#inShelter"/>
+            <Class IRI="#Shelter"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <DataAllValuesFrom>
+            <DataProperty IRI="#hasFamilyName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <DataAllValuesFrom>
+            <DataProperty IRI="#hasGivenName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#hasAge"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Room"/>
+        <Class IRI="#ShelterThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Room"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasBed"/>
+            <Class IRI="#Bed"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Room"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasOccupant"/>
+            <Class IRI="#Occupant"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Room"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#inShelter"/>
+            <Class IRI="#Shelter"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shelter"/>
+        <Class IRI="#ShelterThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shelter"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasRoom"/>
+            <Class IRI="#Room"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Woman"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Woman"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasGender"/>
+            <NamedIndividual IRI="#female"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WomenShelter"/>
+        <Class IRI="#Shelter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WomenShelter"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasRoom"/>
+            <ObjectIntersectionOf>
+                <Class IRI="#Room"/>
+                <ObjectAllValuesFrom>
+                    <ObjectProperty IRI="#hasOccupant"/>
+                    <Class IRI="#Woman"/>
+                </ObjectAllValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#MenShelter"/>
+        <Class IRI="#WomenShelter"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Gender"/>
+        <NamedIndividual IRI="#female"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Gender"/>
+        <NamedIndividual IRI="#male"/>
+    </ClassAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#forPerson"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#forRoom"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#forShelter"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#forTimeInterval"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasBed"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGender"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasMember"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasOccupant"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasRoom"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#inRoom"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#inShelter"/>
+        <ObjectProperty IRI="#shelterObjectProperty"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#forRoom"/>
+    </FunctionalObjectProperty>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasBed"/>
+            <ObjectProperty IRI="#inRoom"/>
+            <ObjectProperty IRI="#inShelter"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#inShelter"/>
+    </SubObjectPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasAge"/>
+        <DataProperty IRI="#shelterData_Property"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasFamilyName"/>
+        <DataProperty IRI="#shelterData_Property"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasGivenName"/>
+        <DataProperty IRI="#shelterData_Property"/>
+    </SubDataPropertyOf>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasAge"/>
+    </FunctionalDataProperty>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AdultShelter</IRI>
+        <Literal xml:lang="en">Adult Shelter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <IRI>#AdultShelter</IRI>
+        <Literal xml:lang="en">An adult shelter is defined to be a shelter where the occupants are restricted to be Person&apos;s 18. years and older.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MenShelter</IRI>
+        <Literal xml:lang="en">Men Shelter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <IRI>#MenShelter</IRI>
+        <Literal xml:lang="en">A women&apos;s shelter is defined to be a shelter where the occupants are restricted to be men.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Occupant</IRI>
+        <Literal xml:lang="en">Occupant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <IRI>#Occupant</IRI>
+        <Literal xml:lang="en">An occupant is a Person or Family that is assigned to a room in a shelter.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Shelter</IRI>
+        <Literal xml:lang="en">Shelter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <IRI>#Shelter</IRI>
+        <Literal xml:lang="en">A shelter is a building that contains rooms and the rooms contain beds.  Occupants are assigned to rooms, can be a Person or Family, and Person&apos;s are assigned to beds.
+
+The capacity of a shelter is determined by aggregating the number of beds across all rooms in the shelter.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WomenShelter</IRI>
+        <Literal xml:lang="en">Women Shelter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <IRI>#WomenShelter</IRI>
+        <Literal xml:lang="en">A women&apos;s shelter is defined to be a shelter where the occupants are restricted to be women.</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
