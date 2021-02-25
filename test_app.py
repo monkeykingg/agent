@@ -1,5 +1,7 @@
 import unittest
-from app import app, db, Agent, User
+from agent import app, db
+from agent.models import Agent, User
+from agent.commands import forge, initdb
 
 class WatchlistTestCase(unittest.TestCase):
 

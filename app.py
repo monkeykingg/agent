@@ -38,6 +38,10 @@ login_manager.login_view = 'login'
 
 
 
+
+
+
+
 # new command: initdb
 @app.cli.command()
 @click.option('--drop', is_flag=True, help='Create after drop.')
@@ -92,10 +96,25 @@ def admin(username, password):
     db.session.commit()
     click.echo('Done.')
 
+
+
+
+
+
+
 @login_manager.user_loader
 def load_user(user_id):
     user = User.query.get(int(user_id))
     return user
+
+# skip user when render_template
+@app.context_processor
+def inject_user(): 
+    user = User.query.first()
+    return dict(user=user)
+
+
+
 
 
 
@@ -122,6 +141,8 @@ class Agent(db.Model):
 
 
 
+
+
 @app.route('/hello')
 def hello():
     return '<h1>Hello!</h1><img src="http://helloflask.com/totoro.gif">'
@@ -138,12 +159,6 @@ def test_url_for():
     print(url_for('test_url_for'))  # /test
     print(url_for('test_url_for', num=2)) # /test?num=2
     return 'Test page'
-
-# skip user when render_template
-@app.context_processor
-def inject_user(): 
-    user = User.query.first()
-    return dict(user=user)
 
 # main index
 @app.route('/', methods=['GET', 'POST'])

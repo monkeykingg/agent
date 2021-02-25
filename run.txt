@@ -2,5 +2,5 @@
 flask run
 
 
-coverage run --source=app test_app.py
+coverage run --source=agent test_app.py
 coverage report
