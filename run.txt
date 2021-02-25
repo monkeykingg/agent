@@ -1,2 +1,6 @@
 . env/bin/activate
 flask run
+
+
+coverage run --source=app test_app.py
+coverage report
