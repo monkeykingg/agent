@@ -5,6 +5,8 @@
 <form method="post">
     Name <input type="text" name="name" autocomplete="off" required value="{{ agent.name }}">
     Time <input type="text" name="time" autocomplete="off" required value="{{ agent.time }}">
+    Info <input type="text" name="info" autocomplete="off" required value="{{ agent.info }}">
+    Onto <input type="text" name="onto" autocomplete="off" required value="{{ agent.onto }}">
     <input class="btn" type="submit" name="submit" value="Update">
 </form>
 {% endblock %}

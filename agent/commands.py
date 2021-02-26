@@ -1,4 +1,5 @@
 import click
+from datetime import datetime, timedelta
 
 from agent import app, db
 from agent.models import User, Agent
@@ -22,15 +23,23 @@ def forge():
     username = 'Bill Wang'
     pw = 'password'
     agents = [
-        {'name': 'agent 1', 'time': '2021-01-01'},
-        {'name': 'agent 2', 'time': '2021-01-02'},
-        {'name': 'agent 3', 'time': '2021-02-01'},
+
+        {'name': 'agent 1', 
+         'time': str(datetime.now() - timedelta(1)), 
+         'info': '{"Access":"0", "URI":"shelter", "Port":"default", "Address":"localhost", "Status":"inactive", "Capacity":"100"}', 
+         'onto': 'http://ontology.eil.utoronto.ca/tove/shelter.owl'},
+
+        {'name': 'agent 2', 
+         'time': str(datetime.now()), 
+         'info': '{"Access":"1", "URI":"shelter", "Port":"default", "Address":"localhost", "Status":"active", "Capacity":"200"}', 
+         'onto': 'http://www.lesfleursdunormal.fr/static/_downloads/pizza_onto.owl'}
+
     ]
 
     user = User(username=username, password_hash=pw)
     db.session.add(user)
     for a in agents:
-        agent = Agent(name=a['name'], time=a['time'])
+        agent = Agent(name=a['name'], time=a['time'], info=a['info'], onto=a['onto'])
         db.session.add(agent)
 
     db.session.commit()

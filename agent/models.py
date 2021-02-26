@@ -17,4 +17,6 @@ class User(db.Model, UserMixin):
 class Agent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60))
-    time = db.Column(db.String(60))
+    time = db.Column(db.String(100))
+    info = db.Column(db.String(200))
+    onto = db.Column(db.String(200))

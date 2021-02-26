@@ -1,4 +1,8 @@
 . env/bin/activate
+
+flask initdb --drop
+flask forge
+
 flask run
 
 

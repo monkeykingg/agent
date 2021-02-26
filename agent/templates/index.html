@@ -9,13 +9,15 @@
 <form method="post">
     Name <input type="text" name="name" autocomplete="off" required>
     Time <input type="text" name="time" autocomplete="off" required>
+    Info <input type="text" name="info" autocomplete="off" required>
+    Onto <input type="text" name="onto" autocomplete="off" required>
     <input class="btn" type="submit" name="submit" value="Add">
 </form>
 {% endif %}
 
 <ul class="agent-list">
     {% for agent in agents %}  {# loop agents #}
-    <li>{{ agent.name }} - {{ agent.time }}
+    <li>{{ agent.name }} - {{ agent.time }} - {{ agent.info }} - {{ agent.onto }}
         <span class="float-right">
 
         {% if current_user.is_authenticated %}
@@ -29,6 +31,6 @@
     </li>  {# equal to agent['name'] #}
     {% endfor %}  {# use endfor tag to end for loop #}
 </ul>
-<img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}">
+<!-- <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}"> -->
 
 {% endblock %}

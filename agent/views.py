@@ -30,12 +30,14 @@ def index():
 
         name = request.form.get('name')
         time = request.form.get('time')
+        info = request.form.get('info')
+        onto = request.form.get('onto')
 
         if not name or not time or len(time) > 60 or len(name) > 60:
             flash('Invalid input.') 
             return redirect(url_for('index'))
 
-        agent = Agent(name=name, time=time)
+        agent = Agent(name=name, time=time, info=info, onto=onto)
         db.session.add(agent) 
         db.session.commit()
         flash('Agent added.')
@@ -53,6 +55,8 @@ def edit(agent_id):
     if request.method == 'POST': 
         name = request.form['name']
         time = request.form['time']
+        info = request.form['info']
+        onto = request.form['onto']
 
         if not name or not time or len(time) > 60 or len(name) > 60:
             flash('Invalid input.')
@@ -60,6 +64,8 @@ def edit(agent_id):
 
         agent.name = name
         agent.time = time
+        agent.info = info
+        agent.onto = onto
         db.session.commit()
         flash('Agent updated.')
         return redirect(url_for('index'))
