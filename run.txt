@@ -1,10 +1,14 @@
-. env/bin/activate
+export FLASK_APP=agent
 
+. env/bin/activate
+deactivate
+
+
+flask admin
 flask initdb --drop
 flask forge
 
 flask run
-
 
 coverage run --source=agent test_app.py
 coverage report
